@@ -1,0 +1,54 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define N 100
+#define M 1000000000
+int 
+main()
+{
+	int ix[N],iz[N]={0},iy,ii,flag,flag2,n;
+	printf("请输入%d个数(小于%d),输入0结束\n",N,M);
+	for(ii=0;ii<N;ii++)
+	{
+		scanf_s("%d",&ix[ii]);
+		if(ix[ii]==0)
+			break;
+	}
+	printf("排好序的数列为:\n");
+	flag=ii;
+	flag2=ii;
+	n=0;
+	for(ii=1;ii<=M;ii++)
+	{
+		for(iy=0;iy<N;iy++)
+		{
+			if(ii==ix[iy])
+			{   
+				iz[n]=ix[iy];
+				printf("%10d",ix[iy]);
+				n++;
+				flag--;
+			}
+		}
+		if(flag==0)
+		{
+			break;
+		} 
+	}
+	printf("\n此时累加数为%d\n",ii);
+	printf("排好序的数组为:\n");
+	for(ii=0;ii<flag2;ii++)
+	{
+		if(iz[ii]!=0)
+		{
+			printf("%10d",iz[ii]);
+		}
+	}
+	printf("\n原数组为:\n");
+	for(ii=0;ii<flag2;ii++)
+	{
+		printf("%10d",ix[ii]);
+	}
+	printf("\n");
+	system("pause");
+	return 0;
+}

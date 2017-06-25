@@ -1,0 +1,81 @@
+1  S->id=E	
+{
+属性
+    p = lookup (id.name)
+    if(p!=nil then
+    emit(p '=' E.place)
+    else error
+}
+
+2  E->E+T
+{
+属性
+    E.place = newtemp;
+    emit(E.place '=' E1.place '+' E2.place)
+}
+	
+3  E->E-T
+{
+属性
+    E.place = newtemp;
+    emit(E.place '=' E1.place '-' E2.place)
+}
+
+4  T->T*F
+{
+属性
+    E.place = newtemp;
+    emit(E.place '=' E1.place '*' E2.place)
+}
+  
+
+5  T->T/F
+{
+属性
+    E.place = newtemp;
+    emit(E.place '=' E1.place '*' E2.place)
+}
+
+6  E->-E
+{
+属性
+    E.place = newtemp;
+    emit(E.place '=' 'uminus' E1.place)
+}
+
+7  F->(E)
+{
+属性
+    E.place=E1.place
+}
+
+8  F->id
+{
+属性
+    p=lookup(id.name)
+    if p!=nil then
+    E.place=p
+    else error
+}
+
+9  E->T
+{
+属性
+    E.place=E1.place
+}
+
+10	T->F
+{
+属性
+    E.place=E1.place
+}
+
+4,12,10
+
+S E T F
+
+= + - * / ( ) id
+
+
+
+

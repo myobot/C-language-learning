@@ -1,0 +1,41 @@
+#include<stdio.h>
+#define N 100
+int
+main()
+{
+	int ix[N],n,ii,ij,ik,ip,flag;
+	printf("请输入少于等于%d个数,输入0结束输入!\n",N);
+	for(ii=0;ii<N;ii++)
+	{
+		scanf("%d",&ix[ii]);
+		if(ix[ii]==0)
+			break;
+	}
+	flag=ii-1;
+	for(ii=0;ii<=flag;ii++)
+	{
+		n=ix[ii];
+		ik=ii;
+		for(ij=ii+1;ij<=flag;ij++)
+		{
+			if(n>ix[ij])
+			{
+				n=ix[ij];
+				ik=ij;
+			}
+		}
+		if(ik!=ii)
+		{
+			ip=ix[ii];
+			ix[ii]=ix[ik];
+			ix[ik]=ip;
+		}
+	}
+	printf("排好顺序的数列为:\n");
+	for(ii=0;ii<=flag;ii++)
+	{
+		printf("%4d",ix[ii]);
+	}
+	printf("\n");
+	return 0;
+}
